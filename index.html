@@ -1,46 +1,277 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Ecoluá — Empaques Sustentables y Retornables</title>
-  <meta name="description" content="Ecoluá ofrece empaques ecológicos y un sistema de recolección, higienización y reutilización para PYMEs en Chile. Suscripción flexible, economía circular y cumplimiento Ley REP." />
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Ecoluá — Empaques sustentables y retornables</title>
+  <meta name="description" content="Ecoluá: empaques ecológicos retornables + servicio de recolección, higienización y reutilización para PYMEs, cafeterías y restaurantes. Cumplimiento Ley REP en Chile.">
+  <link rel="icon" href="logo.png" type="image/png">
   <style>
-    body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; margin:0; padding:0; background:#f7fdf9; color:#111;}
-    header { background:#10B981; color:white; padding:40px 20px; text-align:center; }
-    header img { display:block; margin:0 auto 20px auto; max-width:220px; }
-    header h1 { margin:10px 0 0 0; font-size:2.5em; font-weight:700; }
-    header p { font-size:1.2em; margin-top:5px; }
-    main { padding:20px; max-width:900px; margin:auto; line-height:1.6; }
-    section { margin-bottom:40px; }
-    h2 { color:#059669; }
-    footer { background:#059669; color:white; text-align:center; padding:15px; margin-top:40px; }
-    a { color:#059669; text-decoration:none; }
-    a:hover { text-decoration:underline; }
-    .contact { background:#ecfdf5; padding:20px; border:1px solid #d1fae5; border-radius:10px; box-shadow:0 2px 5px rgba(0,0,0,0.05); }
+    :root{
+      --ink:#0c1420;
+      --muted:#5b718b;
+      --bg:#f5fbf8;
+      --brand:#12b886;      /* emerald */
+      --brand-2:#0f9d76;    /* deeper emerald */
+      --brand-3:#073b4c;    /* dark contrast */
+      --card:#ffffff;
+      --ring:rgba(18,184,134,.22);
+      --shadow: 0 14px 34px rgba(0,0,0,.08);
+      --radius:22px;
+    }
+    *{box-sizing:border-box}html,body{margin:0;padding:0;font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Arial,sans-serif;background:var(--bg);color:var(--ink)}
+    img{max-width:100%;height:auto}
+    a{color:var(--brand-2);text-decoration:none}a:hover{text-decoration:underline}
+    .container{max-width:1160px;margin:0 auto;padding:0 22px}
+    /* NAV */
+    .nav{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.55);backdrop-filter:blur(10px);border-bottom:1px solid #e8f3ee}
+    .nav-inner{display:flex;align-items:center;justify-content:space-between;padding:10px 0}
+    .brand{display:flex;align-items:center;gap:10px;font-weight:800}
+    .brand img{width:32px;height:32px;border-radius:10px}
+    .nav a.link{color:var(--muted);font-weight:600;padding:.45rem .7rem;border-radius:12px}
+    .nav a.link:hover{background:#e8f7f1;color:var(--brand-2)}
+    .btn{display:inline-flex;align-items:center;gap:8px;padding:.9rem 1.2rem;border-radius:999px;border:1px solid var(--brand-2);font-weight:800;box-shadow:var(--shadow);cursor:pointer}
+    .btn.primary{background:var(--brand);border-color:var(--brand);color:#fff}
+    .btn.ghost{background:#fff;color:var(--brand-2)}
+    .btn.dark{background:var(--brand-3);border-color:var(--brand-3);color:#fff}
+    .btn:hover{transform:translateY(-1px);transition:.2s ease}
+    /* HERO */
+    .hero{position:relative;background:linear-gradient(160deg,#12b886 0%,#0f9d76 60%,#0b7057 100%);color:#fff;overflow:hidden}
+    .hero::before{content:"";position:absolute;inset:-20% -10% auto -10%;height:300px;background:radial-gradient(ellipse at top left, rgba(255,255,255,.18), transparent 50%);}
+    .hero::after{content:"";position:absolute;inset:auto -10% -20% -10%;height:300px;background:radial-gradient(ellipse at bottom right, rgba(255,255,255,.14), transparent 50%);}
+    .hero-inner{padding:70px 0 56px 0;text-align:center;position:relative}
+    .hero img{width:120px;filter:drop-shadow(0 8px 20px rgba(0,0,0,.18));margin:0 auto 10px}
+    .title{font-size:44px;line-height:1.1;margin:6px 0 8px;font-weight:900}
+    .subtitle{opacity:.95;max-width:760px;margin:0 auto 18px;font-size:18px}
+    .cta{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+    /* Sections */
+    section{padding:70px 0}
+    .section-title{font-size:28px;margin:0 0 14px 0;color:var(--brand-2);letter-spacing:.2px}
+    .muted{color:var(--muted)}
+    .grid{display:grid;grid-template-columns:repeat(12,1fr);gap:20px}
+    .col-4{grid-column:span 4}.col-5{grid-column:span 5}.col-6{grid-column:span 6}.col-7{grid-column:span 7}.col-12{grid-column:span 12}
+    @media (max-width:980px){.col-4,.col-5,.col-6,.col-7{grid-column:span 12}.title{font-size:34px}}
+    .card{background:var(--card);border:1px solid #eaf3ef;border-radius:var(--radius);padding:22px;box-shadow:var(--shadow)}
+    .band{background:linear-gradient(180deg,#e8f7f1,transparent)}
+    /* Timeline */
+    .steps{display:grid;gap:14px}
+    .step{display:flex;gap:12px;align-items:flex-start}
+    .step .dot{min-width:28px;height:28px;display:grid;place-items:center;border-radius:50%;background:#fff;border:2px solid var(--brand);color:var(--brand-2);font-weight:800;box-shadow:var(--shadow)}
+    /* Pricing */
+    .price{font-size:28px;font-weight:900;color:var(--brand-2);margin:6px 0}
+    .plan{position:relative}
+    .plan.popular{border:2px solid var(--brand)}
+    .badge{position:absolute;top:-12px;right:18px;background:var(--brand-3);color:#fff;font-size:12px;padding:.3rem .6rem;border-radius:999px;box-shadow:var(--shadow)}
+    /* KPI */
+    .kpis{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+    .kpi{background:#0f9d76;color:#e9fff7;border-radius:18px;padding:18px;text-align:center;box-shadow:var(--shadow)}
+    .kpi .num{font-size:32px;font-weight:900}
+    @media (max-width:900px){.kpis{grid-template-columns:1fr}}
+    /* Footer */
+    footer{background:#0c1f18;color:#cfeee2;padding:30px 0}
+    footer a{color:#cfeee2}
   </style>
 </head>
 <body>
-  <header>
-    <img src="logo.png" alt="Logo Ecoluá">
-    <h1>Ecoluá</h1>
-    <p>Empaques Sustentables y Retornables</p>
-  </header>
-  <main>
-    <section>
-      <h2>¿Qué es Ecoluá?</h2>
-      <p>Ecoluá es una empresa chilena que combina empaques ecológicos con un sistema de retorno inteligente. Nuestro modelo operativo integra la entrega de envases sustentables, la recolección en fechas pactadas, procesos de higienización y la reutilización o reciclaje responsable. Así ayudamos a PYMEs y negocios de delivery a cumplir la Ley REP y reducir su huella ambiental.</p>
-    </section>
 
-    <section class="contact">
-      <h2>Contacto</h2>
-      <p><strong>Teléfono:</strong> <a href="tel:+56987506723">+56 9 8750 6723</a></p>
-      <p><strong>Dominio sugerido:</strong> ecolua.cl</p>
-      <p><em>Este sitio es una demo para el proyecto MIC.</em></p>
-    </section>
-  </main>
+  <!-- NAV -->
+  <nav class="nav">
+    <div class="container nav-inner">
+      <a class="brand" href="#top"><img src="logo.png" alt="Logo Ecoluá"><span>Ecoluá</span></a>
+      <div style="display:flex;gap:8px;align-items:center;flex-wrap:wrap">
+        <a class="link" href="#valor">Propuesta</a>
+        <a class="link" href="#mercado">Mercado</a>
+        <a class="link" href="#modelo">Modelo</a>
+        <a class="link" href="#planes">Planes</a>
+        <a class="link" href="#contacto">Contacto</a>
+        <a class="btn ghost" href="https://wa.me/56987506723" target="_blank" rel="noopener">WhatsApp</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <header id="top" class="hero">
+    <div class="container hero-inner">
+      <img src="logo.png" alt="Logo Ecoluá">
+      <h1 class="title">Empaques sustentables y retornables</h1>
+      <p class="subtitle">Solución integral para PYMEs, cafeterías y restaurantes: <strong>envases ecológicos + retiro programado + higienización + reutilización</strong>. Ahorra costos y cumple la <strong>Ley REP</strong> en Chile.</p>
+      <div class="cta">
+        <a class="btn primary" href="#contacto">Agendar demo</a>
+        <a class="btn dark" href="#planes">Ver planes</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- PROPUESTA DE VALOR -->
+  <section id="valor" class="container">
+    <div class="grid">
+      <div class="col-7">
+        <h2 class="section-title">Propuesta de valor</h2>
+        <p>Ecoluá reduce drásticamente residuos de un solo uso al <strong>prolongar la vida útil</strong> de cada envase mediante materiales durables, procesos de <strong>limpieza industrial</strong> y un sistema de <strong>trazabilidad</strong> por ciclos de uso. Además, acompañamos a los negocios a cumplir con la <strong>Responsabilidad Extendida del Productor (Ley REP)</strong>.</p>
+        <div class="kpis" style="margin-top:16px">
+          <div class="kpi"><div class="num">70%</div><div>menos residuos</div></div>
+          <div class="kpi"><div class="num">5+ usos</div><div>punto de equilibrio</div></div>
+          <div class="kpi"><div class="num">100%</div><div>trazable por QR</div></div>
+        </div>
+      </div>
+      <aside class="col-5 card">
+        <h3 style="margin-top:0">¿Por qué nos eligen?</h3>
+        <ul style="margin:0 0 0 18px">
+          <li>Mezcla de <strong>producto + servicio</strong> (diferenciación real).</li>
+          <li>Costos competitivos frente a plásticos tradicionales.</li>
+          <li>Marca alineada a <strong>sostenibilidad</strong> y economía circular.</li>
+        </ul>
+      </aside>
+    </div>
+  </section>
+
+  <!-- MERCADO OBJETIVO -->
+  <section id="mercado" class="band">
+    <div class="container">
+      <h2 class="section-title">Mercado objetivo</h2>
+      <div class="grid">
+        <div class="col-6 card">
+          <strong>Cafeterías y restaurantes de delivery</strong>
+          <p class="muted">Alto consumo de envases (bebidas, café, almuerzos). Sustituimos desechables por retornables.</p>
+        </div>
+        <div class="col-6 card">
+          <strong>Tiendas online y emprendimientos “eco”</strong>
+          <p class="muted">Ventas con propuesta sostenible y necesidad de diferenciarse.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MODELO OPERATIVO -->
+  <section id="modelo" class="container">
+    <div class="grid">
+      <div class="col-7">
+        <h2 class="section-title">Modelo operativo de Ecoluá</h2>
+        <div class="steps">
+          <div class="step"><div class="dot">1</div><div><strong>Suministro de envases</strong><br><span class="muted">Inicio con proveedores certificados para reducir CAPEX, avanzando a diseño propio optimizado en el mediano plazo.</span></div></div>
+          <div class="step"><div class="dot">2</div><div><strong>Suscripciones</strong><br><span class="muted">Básico (solo envases), Estándar (envases + retiro mensual) y Premium (envases + retiro semanal + personalización).</span></div></div>
+          <div class="step"><div class="dot">3</div><div><strong>Recolección & logística</strong><br><span class="muted">Retiro en fechas pactadas, clasificación y transporte a planta de higienización.</span></div></div>
+          <div class="step"><div class="dot">4</div><div><strong>Higienización industrial</strong><br><span class="muted">Lavado, sanitización y control de calidad para reincorporar los envases al ciclo productivo.</span></div></div>
+          <div class="step"><div class="dot">5</div><div><strong>Trazabilidad & KPI</strong><br><span class="muted">Seguimiento de ciclos de uso por QR y reportes de impacto para clientes.</span></div></div>
+        </div>
+      </div>
+      <aside class="col-5 card">
+        <h3 style="margin-top:0">Incentivos al retorno</h3>
+        <ul style="margin:0 0 14px 18px">
+          <li>Créditos o descuentos por devolución dentro de plazo.</li>
+          <li>Puntos canjeables por beneficios.</li>
+          <li>Campañas “Trae tu envase” con sorteos mensuales.</li>
+        </ul>
+        <p class="muted" style="margin:0">La vida útil se extiende mediante materiales duraderos, protocolos de limpieza y control de ciclos.</p>
+      </aside>
+    </div>
+  </section>
+
+  <!-- PLANES -->
+  <section id="planes" class="band">
+    <div class="container">
+      <h2 class="section-title">Planes de suscripción</h2>
+      <div class="grid">
+        <div class="col-4 card plan">
+          <h3 style="margin:0">Básico</h3>
+          <p class="muted">Solo envases ecológicos</p>
+          <p class="price">Desde $</p>
+          <ul style="margin:0 0 16px 18px">
+            <li>Kit de envases mixtos</li>
+            <li>QR de trazabilidad</li>
+            <li>Soporte base</li>
+          </ul>
+          <a class="btn ghost" href="https://wa.me/56987506723" target="_blank">Cotizar</a>
+        </div>
+        <div class="col-4 card plan popular">
+          <div class="badge">Más elegido</div>
+          <h3 style="margin:0">Estándar</h3>
+          <p class="muted">Envases + retiro mensual</p>
+          <p class="price">Desde $$</p>
+          <ul style="margin:0 0 16px 18px">
+            <li>Kit + logística programada</li>
+            <li>Higienización certificada</li>
+            <li>Reporte mensual</li>
+          </ul>
+          <a class="btn primary" href="https://wa.me/56987506723" target="_blank">Cotizar</a>
+        </div>
+        <div class="col-4 card plan">
+          <h3 style="margin:0">Premium</h3>
+          <p class="muted">Envases + retiro semanal</p>
+          <p class="price">Desde $$$</p>
+          <ul style="margin:0 0 16px 18px">
+            <li>Personalización (marca)</li>
+            <li>2–3 retiros/semana</li>
+            <li>Dashboard KPI</li>
+          </ul>
+          <a class="btn dark" href="https://wa.me/56987506723" target="_blank">Hablar con ventas</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="container">
+    <h2 class="section-title">Preguntas frecuentes</h2>
+    <div class="grid">
+      <div class="col-6 card">
+        <strong>¿Qué pasa si un envase se daña?</strong>
+        <p class="muted">Se retira del circuito y se recicla. El cliente mantiene stock operativo con reposición.</p>
+      </div>
+      <div class="col-6 card">
+        <strong>¿Cómo se asegura la inocuidad?</strong>
+        <p class="muted">Protocolos de higienización industrial con registros y controles de calidad.</p>
+      </div>
+      <div class="col-6 card">
+        <strong>¿Qué necesito para empezar?</strong>
+        <p class="muted">Elegir un plan, recibir el kit, activar QR y programar el calendario de retiros.</p>
+      </div>
+      <div class="col-6 card">
+        <strong>¿Cómo reportan a la Ley REP?</strong>
+        <p class="muted">Entregamos métricas de reutilización y reducción de residuos listas para auditoría.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACTO -->
+  <section id="contacto" class="band">
+    <div class="container">
+      <div class="grid">
+        <div class="col-6">
+          <h2 class="section-title">Contacto</h2>
+          <div class="card">
+            <p><strong>Teléfono:</strong> <a href="tel:+56987506723">+56 9 8750 6723</a></p>
+            <p><strong>Email (sugerido):</strong> contacto@ecolua.cl</p>
+            <p><strong>Ubicación:</strong> Chile</p>
+            <p class="muted">Sitio demo para el proyecto MIC.</p>
+            <div style="display:flex;gap:10px;flex-wrap:wrap">
+              <a class="btn primary" href="https://wa.me/56987506723" target="_blank">Escríbenos por WhatsApp</a>
+              <a class="btn ghost" href="#planes">Ver planes</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-6">
+          <h2 class="section-title">Déjanos tu mensaje</h2>
+          <div class="card">
+            <form onsubmit="event.preventDefault(); alert('¡Gracias! Te contactaremos pronto.');">
+              <label>Nombre<br><input required placeholder="Tu nombre" style="width:100%;padding:12px 14px;border-radius:12px;border:1px solid #dbe9e3;margin:6px 0"></label>
+              <label>Email<br><input type="email" required placeholder="tucorreo@ejemplo.cl" style="width:100%;padding:12px 14px;border-radius:12px;border:1px solid #dbe9e3;margin:6px 0"></label>
+              <label>Mensaje<br><textarea rows="4" placeholder="Cuéntanos sobre tu negocio" style="width:100%;padding:12px 14px;border-radius:12px;border:1px solid #dbe9e3;margin:6px 0"></textarea></label>
+              <button class="btn dark" type="submit">Enviar</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <footer>
-    <p>© 2025 Ecoluá — Chile • Economía circular y empaques retornables</p>
+    <div class="container" style="display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap">
+      <span>© <span id="year"></span> Ecoluá — Chile</span>
+      <span><a href="https://wa.me/56987506723" target="_blank">WhatsApp</a> • <a href="tel:+56987506723">+56 9 8750 6723</a></span>
+    </div>
   </footer>
+
+  <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
 </body>
 </html>
